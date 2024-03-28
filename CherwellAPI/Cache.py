@@ -44,7 +44,7 @@ class ObjectCache:
 
         # Add various uri's for accessing the api
         self.cache["uris"] = {
-            "Token": "{0}/CherwellAPI/token?auth_type=Internal&api_key={1}".format(base_uri, api_key),
+            "Token": "{0}/CherwellAPI/token?auth_mode=Windowsl&api_key={1}".format(base_uri, api_key),
             "BusinessObjectID": "{0}/CherwellAPI/api/V1/getbusinessobjectsummary/busobname/".format(base_uri),
             "BusinessObjectTemplate": "{0}/CherwellAPI/api/V1/GetBusinessObjectTemplate/".format(base_uri),
             "BusinessObjectSummary": "{0}/CherwellAPI/api/V1/getbusinessobjectsummary/busobname/".format(base_uri),
