@@ -15,6 +15,8 @@ Base Functionality Included
 
 The modules also cater for caching of commonly used items such as templates, summaries and business object id's as well as self-managing the expiry and refreshing of the Bearer token used for authorisation. Additionally Tokens can be cached and reused.
 
+This fork alters the auth mechanism used. The mainline CherwellAPI uses auth_type=internal. This module uses auth_mode=Windows.
+
 Encrypting the password and client_key
 ======================================
 
@@ -198,10 +200,11 @@ for business_object in business_objects:
 
 ```
 
-For more examples, refer to our GitHub project [here](https://github.com/streamline-partners/CherwellAPI/tree/master/Examples).
+For more examples, refer to our GitHub project [here](https://github.com/bwittenburg/CherwellAPI/tree/master/Examples).
 
-Full source code can be found [here](https://github.com/streamline-partners/CherwellAPI).
+Full source code can be found [here](https://github.com/bwittenburg/CherwellAPI).
 
+This project was created by Streamline Partners, and they deserve credit for the great work they put into this module.
 To find out more about Streamline Partners and how we could assist you with future projects, click [here](http://www.streamlinepartners.com.au/)
 
   
