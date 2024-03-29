@@ -27,6 +27,10 @@ class ObjectCache:
 
         The base uri of the Cherwell instance
 
+    auth_mode : str
+
+        The authentication mode used to get the token (e.g. Internal, LDAP, SAML, Windows)
+
     api_key : str
 
         The Cherwell REST API client key used for authorisation
@@ -44,7 +48,7 @@ class ObjectCache:
 
         # Add various uri's for accessing the api
         self.cache["uris"] = {
-            "Token": "{0}/CherwellAPI/token?auth_type=Internal&api_key={1}".format(base_uri, api_key),
+            "Token": "{0}/CherwellAPI/token?auth_mode={1}&api_key={2}".format(base_uri, auth_mode, api_key),
             "BusinessObjectID": "{0}/CherwellAPI/api/V1/getbusinessobjectsummary/busobname/".format(base_uri),
             "BusinessObjectTemplate": "{0}/CherwellAPI/api/V1/GetBusinessObjectTemplate/".format(base_uri),
             "BusinessObjectSummary": "{0}/CherwellAPI/api/V1/getbusinessobjectsummary/busobname/".format(base_uri),
