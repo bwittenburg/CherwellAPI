@@ -31,9 +31,13 @@ class ObjectCache:
 
         The Cherwell REST API client key used for authorisation
 
+    auth_mode : str
+
+        The Cherwell authentication mode used to retrieve the token. Supported modes are Internal (default), LDAP, SAML, and Windows.
+
     """
 
-    def __init__(self, base_uri, api_key):
+    def __init__(self, base_uri, api_key, auth_mode):
 
         # Start the cache
         self.cache = {}
@@ -41,10 +45,11 @@ class ObjectCache:
         # add the base uri and other attributes
         self.cache["base_uri"] = base_uri
         self.cache["api_key"] = api_key
+        self.cache["auth_mode"] = auth_mode
 
         # Add various uri's for accessing the api
         self.cache["uris"] = {
-            "Token": "{0}/CherwellAPI/token?auth_mode=Windowsl&api_key={1}".format(base_uri, api_key),
+            "Token": "{0}/CherwellAPI/token?auth_mode={1}&api_key={2}".format(base_uri, auth_mode, api_key),
             "BusinessObjectID": "{0}/CherwellAPI/api/V1/getbusinessobjectsummary/busobname/".format(base_uri),
             "BusinessObjectTemplate": "{0}/CherwellAPI/api/V1/GetBusinessObjectTemplate/".format(base_uri),
             "BusinessObjectSummary": "{0}/CherwellAPI/api/V1/getbusinessobjectsummary/busobname/".format(base_uri),
