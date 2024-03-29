@@ -48,19 +48,24 @@ class Connection:
         provided then this is defaulted to 'None' and a new AccessToken will be created during the first
         interaction to the Cherwell REST API
 
+    auth_mode: str
+
+        The Cherwell authentication mode to use to retrieve the token. Supported modes are Internal (default), LDAP, SAML, and Windows.
+
     https_verify : bool
 
         Flag set to verify SSL Certificates during requests API Calls
 
     """
 
-    def __init__(self, base_uri="", client_key="", username="", password="", cache=None, token=None, https_verify=False):
+    def __init__(self, base_uri="", client_key="", username="", password="", auth_mode="Internal", cache=None, token=None, https_verify=False):
 
         """ Connection instance initialisation """
 
         # Set the values we need that were passed in
         self.uri = base_uri
         self.username = username
+        self.auth_mode = auth_mode
         if not password or not client_key:
             try:
                 self.client_key = CherwellCredentials.decrypt_message("cherwell_api_key")
@@ -78,7 +83,7 @@ class Connection:
             self.cache = cache
         else:
             # We don't have a saved cache object - instantiate a new one
-            self.cache = ObjectCache(self.uri, self.client_key)
+            self.cache = ObjectCache(self.uri, self.client_key, self.auth_mode)
 
         if token is not None and isinstance(token, AccessToken):
 
