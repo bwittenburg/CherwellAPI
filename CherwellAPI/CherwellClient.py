@@ -58,7 +58,7 @@ class Connection:
 
     """
 
-    def __init__(self, base_uri="", client_key="", username="", password="", auth_mode="Internal", cache=None, token=None, https_verify=False):
+    def __init__(self, base_uri="", client_key="", username="", password="", cache=None, token=None, https_verify=False, auth_mode="Internal"):
 
         """ Connection instance initialisation """
 
